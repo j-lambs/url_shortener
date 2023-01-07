@@ -17,8 +17,28 @@ function convertStringToASCII(linkPart)
 
 function convertStringListToASCII(stringList)
 {
-    
+    let convertedStr = ''
+    for (let i = 0; i < stringList.length; i++)
+    {
+        let num = convertStringToASCII(stringList[i])
+        let char = codeToChar(num)
+        convertedStr += char
+    }
+    return convertedStr
 }
+
+// https://stackoverflow.com/a/3145048/20435863
+function codeToChar( number ) 
+{
+    if ( number >= 0 && number <= 25 ) // a-z
+      number = number + 97;
+    else if ( number >= 26 && number <= 51 ) // A-Z
+      number = number + (65-26);
+    else
+      return false; // range error
+    return String.fromCharCode( number );
+}
+
 
 function partitionString(str, max)
 {
@@ -37,7 +57,12 @@ function partitionString(str, max)
 
 const str = 'https://www.twitch.tv/florryworry'
 const myList = partitionString(str, 8)
-for(let i = 0; i < myList.length; i++)
-{
-    console.log(myList[i])
-}
+// for (let i = 0; i < myList.length; i++)
+// {
+//     console.log(myList[i])
+// }
+let convertedList = convertStringListToASCII(myList)
+// for (let i = 0; i < convertedList.length; i++)
+// {
+//     console.log(convertedList[i])
+// }
