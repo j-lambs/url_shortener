@@ -39,30 +39,25 @@ function codeToChar( number )
     return String.fromCharCode( number );
 }
 
-
+// finito
 function partitionString(str, max)
 {
     let per = Math.floor(str.length / max)
     let arr = []
-    for (i = 0; i < str.length; i+=4)
+    for (i = 0; i < str.length; i+=per)
     {
-        arr.push(str.slice(i, i+4))
-    }
-    if (arr.length > max)
-    {
-        arr.pop()
+        arr.push(str.slice(i, i+per))
     }
     return arr
 }
 
-const str = 'https://www.twitch.tv/florryworry'
+// MAIN 
+
+// const str = 'https://www.twitch.tv/florryworry'
+const str = 'https://stackoverflow.com/questions/7117873/do-if-statements-in-javascript-require-curly-braces'
+
 const myList = partitionString(str, 8)
-// for (let i = 0; i < myList.length; i++)
-// {
-//     console.log(myList[i])
-// }
-let convertedList = convertStringListToASCII(myList)
-// for (let i = 0; i < convertedList.length; i++)
-// {
-//     console.log(convertedList[i])
-// }
+let shortLink = convertStringListToASCII(myList)
+console.log(shortLink)
+
+// will have to learn nodeJS to access csv file apparently
