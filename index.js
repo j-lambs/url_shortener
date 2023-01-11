@@ -60,4 +60,16 @@ const myList = partitionString(str, 8)
 let shortLink = convertStringListToASCII(myList)
 console.log(shortLink)
 
-// will have to learn nodeJS to access csv file apparently
+// DATABASE STUFF
+let sql
+const sqlite3 = require('sqlite3').verbose()
+
+// connect to database
+const db = new sqlite3.Database('./test.db', sqlite3.OPEN_READWRITE, (err)=>{if (err) return console.error(err.message)})
+
+// create table
+sql = 'CREATE TABLE IF NOT EXISTS links(short_url varchar primary key, long_url varchar)'
+db.run(sql)
+
+// drop table
+
